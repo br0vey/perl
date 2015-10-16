@@ -1,5 +1,5 @@
 #!/usr/bin/perl
- use strict;
+use strict;
 my @m;
 my $token_count;
 my $var1;
@@ -14,8 +14,12 @@ my $elem;
 my $x;
 my %inoppr;
 my %stkoppr;
-
+my $y;
+my $z;
+my $h;
+my $t;
 $var1 = "- 16 + 2 * 0.3e+2 - .5 ^ ( 2 - 3 )";
+#$var1 = "- 2 + 3 "; 
 #%inoppr = ('(','99', ')', 1, '+', '4', '-', '4', '*', '9','/', '9', '**', '15');  
 %inoppr = (
        '(' => '99',
@@ -39,17 +43,25 @@ $var1 = "- 16 + 2 * 0.3e+2 - .5 ^ ( 2 - 3 )";
 
 
 #%stkoppr = ('(' , '2','+', '5', '-', '5', '*', '5', '/', '11', '**', '14');
-
+$t=0;
+$x=" ";
 @m = split(/ /, $var1);
 foreach my $elem ( @m ) {
-     if ($elem eq "^"){
-     $elem = "**";
-     } 
+       if ($elem eq "^"){
+       $elem = "**";
+       print "elem:$elem\n";
+ 
+       } 
+
 }
+
 if ($m[0] eq "-"){
- $m[1] = $m[0] . $m[1];
+ $m[1] = -$m[1];
  shift @m;
 }
+
+
+
 
 $var2 = join(" ",@m);
 
@@ -58,6 +70,7 @@ $var2 = join(" ",@m);
 foreach $elem (@mm) {
 print "00_stack:@stack\n";
 print "00_elem:$elem\n";
+
 if ( $elem ~~ [keys(%inoppr)] ) {
      $token_count = 1;
      while ( @stack ) {
@@ -139,3 +152,11 @@ $var3=eval ($var2);
 print "---$var3---\n";
 print "rpnst:@rpnst\n";
 #############################vivdod end
+
+#$z=3;
+
+#$y=-$z;
+
+#$h = $y - $z; 
+
+#print "h:$h\n"
