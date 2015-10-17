@@ -14,7 +14,7 @@ my $cny;
 #}
 
 set_rate(
-         cny => 342,
+         cny => 100,
          rur => 61.40 
          );
 
