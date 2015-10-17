@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 BEGIN { $Exporter::Verbose=1 }
 my $rur;
+my $cny;
 # use currency qw(set_rate);
  use currency qw(set_rate);
 #set_rate {
@@ -13,12 +14,17 @@ my $rur;
 #}
 
 set_rate(
-         usd => 1 ,
+         cny => 342,
          rur => 61.40 
          );
 
 my $rur = currency::usd_to_rur(42);
 print "rur:$rur\n";
+my $cny = currency::gbp_to_cny(2);
+print "cny:$cny\n";
+
+
+
 #print currency::rur_to_cny(3);
 ##currency::rur_to_cny;
 #print "$x\n";
