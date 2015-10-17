@@ -2,32 +2,23 @@
 BEGIN { $Exporter::Verbose=1 }
 my $rur;
 my $cny;
-# use currency qw(set_rate);
+my $crn;
+
  use currency qw(set_rate);
-#set_rate {
-# our %cur = (
-#        usd => 2342341,
-#        rur => 65.44,
-#        eur => 1.2,
-#       );
-# our $w = 1345;
-#}
+# use lib 'currency.pm'
 
 set_rate(
          cny => 100,
          rur => 61.40 
          );
 
+$crn = "rur";
 my $rur = currency::usd_to_rur(42);
 print "rur:$rur\n";
+$crn= "cny";
 my $cny = currency::gbp_to_cny(2);
 print "cny:$cny\n";
 
 
 
-#print currency::rur_to_cny(3);
-##currency::rur_to_cny;
-#print "$x\n";
-
-#$rurr = currency::rur_to_cny(42);
-#print "111111111fgd"
+x
