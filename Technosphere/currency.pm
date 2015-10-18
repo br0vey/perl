@@ -1,8 +1,7 @@
 #!/usr/bin/perl
+package currency;
  use strict;
  use warnings;
-
-package currency;
  use Exporter 'import';
 
 my $cexc;
