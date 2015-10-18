@@ -9,9 +9,11 @@ my $cexc;
 my $cout;
 my $cin;
 my $key;
+my $crn;
 my $value;
 my %args;
 my @m;
+our @EXPORT;
 our $AUTOLOAD;
 
 @EXPORT = qw(set_rate);
@@ -33,7 +35,6 @@ print "$crn\n";
         }
    }
 ($cin) = @_;
-#print "gbpin:$gbpin\n";
 $cout = $cexc * $cin;
 print "$cexc * $cin\n";
 return $cout;

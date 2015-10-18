@@ -1,15 +1,16 @@
 #!/usr/bin/perl 
-# use strict;
-# use warnings;
+ package jsonl;
+ use strict;
+ use warnings;
  use Exporter 'import';
  use JSON;
 my $hash;
 my $jsontext;
 my $arrayref;
 my $perl_scalar;
-my @EXPORT;
+our @EXPORT;
 @EXPORT = qw(decode_jsonl encode_jsonl);
-package jsonl;
+
 
 sub decode_jsonl {
     ($jsontext) = @_;
