@@ -1,4 +1,6 @@
 #!/usr/bin/perl
+ use strict;
+ use warnings;
 
 package currency;
  use Exporter 'import';
