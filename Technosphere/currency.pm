@@ -3,11 +3,15 @@
 package currency;
  use Exporter 'import';
 
-my $cexc;
-my $cout;
-my $cin;
+my $rurexc;
+my $cnyexc;
+my $cnyout;
+my $gbpin;
+my $rurout;
 my $key;
 my $value;
+my $usdin;
+my $cnyout;
 my %args;
 my @m;
 our $AUTOLOAD;
@@ -24,16 +28,16 @@ my $program = $AUTOLOAD;
 $crn=$m[$#m];
 print "$crn\n";
    while ( ($key, $value) = each(%args) ) {
+#        print "$key 00=>00 $value\n";
         if ( $key eq $crn ) {
-          print "_cnr:$cnr\n";
-          $cexc = $value;
-          print "_exc:$cexc\n";
+          $cnyexc = $value;
+          print "_exc:$cnyexc\n";
         }
    }
-($cin) = @_;
+($gbpin) = @_;
 #print "gbpin:$gbpin\n";
-$cout = $cexc * $cin;
-print "$cexc * $cin\n";
-return $cout;
+$cnyout = $cnyexc * $gbpin;
+print "$cnyexc * $gbpin\n";
+return $cnyout;
 }
 1;
