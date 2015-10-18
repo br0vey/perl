@@ -2,8 +2,8 @@
 BEGIN { $Exporter::Verbose=1 }
 my $rur;
 my $cny;
-my $crn;
-
+our $crn;
+use vars '$AUTOLOAD';
  use currency qw(set_rate);
 # use lib 'currency.pm'
 

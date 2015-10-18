@@ -13,26 +13,30 @@ my $value;
 my $usdin;
 my $cnyout;
 my %args;
+my @m;
 our $AUTOLOAD;
 
 @EXPORT = qw(set_rate);
 
 sub set_rate {
-%args = (
-         @_ # Список пар аргументов
-         );
+%args = ( @_ );
 }
 
 sub AUTOLOAD {
+my $program = $AUTOLOAD;
+@m= split(/_/, $program);
+$crn=$m[$#m];
+print "$crn\n";
    while ( ($key, $value) = each(%args) ) {
 #        print "$key 00=>00 $value\n";
-        if ( $key eq "cny" ) {
+        if ( $key eq $crn ) {
+          print "_cnr:$cnr\n";
           $cnyexc = $value;
-          print "cnyexc:$cnyexc\n";
+          print "_exc:$cnyexc\n";
         }
    }
 ($gbpin) = @_;
-print "gbpin:$gbpin\n";
+#print "gbpin:$gbpin\n";
 $cnyout = $cnyexc * $gbpin;
 print "$cnyexc * $gbpin\n";
 return $cnyout;
