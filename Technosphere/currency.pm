@@ -25,17 +25,17 @@ sub AUTOLOAD {
 my $program = $AUTOLOAD;
 @m= split(/_/, $program);
 $crn=$m[$#m];
-print "$crn\n";
-   while ( ($key, $value) = each(%args) ) {
-        if (  $crn eq $key ) {
-          $cexc = $value;
+#print "$crn\n";
+#   while ( ($key, $value) = each(%args) ) {
+#        if (  $crn eq $key ) {
+#          $cexc = $value;
 
-          print "_exc:$cexc\n";
-        }
-   }
+#          print "_exc:$cexc\n";
+#        }
+#   }
 ($cin) = @_;
-$cout = $cexc * $cin;
-print "$cexc * $cin\n";
+$cout = $args{$crn} * $cin;
+print "$args{$crn} * $cin\n";
 return $cout;
 }
 1;
