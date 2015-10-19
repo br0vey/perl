@@ -7,11 +7,10 @@ package currency;
 my $cexc;
 my $cout;
 my $cin;
-my $key;
-my $crn;
-my $value;
+my $cto;
+my $cfr;
 my %args;
-my @m;
+my $cinusd;
 our @EXPORT;
 our $AUTOLOAD;
 
@@ -22,19 +21,15 @@ sub set_rate {
 }
 
 sub AUTOLOAD {
-@m= split(/_/, $AUTOLOAD;);
-$crn=$m[$#m];
-#print "$crn\n";
-#   while ( ($key, $value) = each(%args) ) {
-#        if (  $crn eq $key ) {
-#          $cexc = $value;
-
-#          print "_exc:$cexc\n";
-#        }
-#   }
-($cin) = @_;
-$cout = $args{$crn} * $cin;
-print "$args{$crn} * $cin\n";
-return $cout;
+   if ($AUTOLOAD =~ m/\w+\::(\w\w\w)\_\w+\_(\w\w\w)\b/) {
+     $cfr=$1;
+     $cto=$2;
+   }
+   ($cin) = @_; 
+   $cinusd = $cin * $args{$cfr};
+#   print "usd:$cinusd = $cin * $args{$cfr}\n ";
+   $cout = $args{$cto} * $cinusd;
+#   print "$args{$cto} * $cinusd\n";
+   return $cout;
 }
 1;
