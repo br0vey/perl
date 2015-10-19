@@ -8,7 +8,9 @@ my $cny;
 
 set_rate(
          cny => 100,
-         rur => 61.40 
+         rur => 61.40, 
+         usd => 1,
+         gbp => 1.5468
          );
 
 $rur = currency::usd_to_rur(42);
