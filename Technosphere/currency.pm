@@ -22,8 +22,7 @@ sub set_rate {
 }
 
 sub AUTOLOAD {
-my $program = $AUTOLOAD;
-@m= split(/_/, $program);
+@m= split(/_/, $AUTOLOAD;);
 $crn=$m[$#m];
 #print "$crn\n";
 #   while ( ($key, $value) = each(%args) ) {
