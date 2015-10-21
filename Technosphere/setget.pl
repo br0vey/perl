@@ -2,12 +2,29 @@
 package setgetm;
  use strict;
  use warnings;
- use setget qw(get_x set_x $x $y );
-#our $x;
-#our $y; 
+ use setget qw(x y w);
+our $x;
+our $y; 
+our $w;
+$x = 42;
+$y = 75;
+$w = 333;
+print get_x();
+print "get_\n";
+print get_y();
+print "\n";
+print "set_get:\n";
+set_x(456);
+print get_x();
+print "_______\n";
+print "set_get:\n";
+set_y(234234);
+print get_y();
+print "\n";
+print get_w();
+print "\n";
+set_w(444444444444);
+print get_w();
+print "\n";
 
-our $w = 42;
 
-set_x(1234556);
-print "xm:$x\n";
-get_x;
