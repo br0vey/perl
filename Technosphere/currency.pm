@@ -11,22 +11,22 @@ our %args;
 @EXPORT = qw(set_rate);
 
 sub set_rate {
-%args = ( @_ );
+   %args = ( @_ );
 }
 
 sub AUTOLOAD {
-my $cexc;
-my $cout;
-my $cin;
-my $cto;
-my $cfr;
-my $cinusd;
+   my $cexc;
+   my $cout;
+   my $cin;
+   my $cto;
+   my $cfr;
+   my $cinusd;
    if ($AUTOLOAD =~ m/\w+\::(\w\w\w)\_\w+\_(\w\w\w)\b\z/) {
      $cfr=$1;
      $cto=$2;
    }
    else {
-       die;
+       die "error";
    }      
    ($cin) = @_; 
    $cinusd = $cin * $args{$cfr};
