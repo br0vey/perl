@@ -9,23 +9,25 @@ our @EXPORT;
 
 
 sub decode_jsonl {
-   my $hash;
-   my $jsontext; 
-   my @m;
+   my $hashout;
+   my $jsontextin; 
+   my @tmparr;
    my $elem;
-   $_[$#_]=~s/}\n{/},{/g;
-   ($jsontext) = @_;
-   $hash = decode_json($jsontext);
-   return $hash;
+   @tmparr = @_;
+   $tmparr[$#tmparr] =~ s/\n/,/g;
+   ($jsontextin) = @tmparr;
+   $hashout = decode_json($jsontextin);
+   return $hashout;
 }
 
 sub encode_jsonl{
    my $elem;
-   my $perl_scalar;
-   my $jsontext;;
-   ($perl_scalar) = @_;
-   $jsontext = JSON->new->utf8->encode($perl_scalar);
-   $jsontext=~s/},{/}\n{/g;
-   return $jsontext;
+   my $perl_scalarin;
+   my $jsontextout;;
+   ($perl_scalarin) = @_;
+   $jsontextout = JSON->new->utf8->encode($perl_scalarin);
+   #print "jsontext:$jsontext\n";
+   $jsontextout =~ s/,{"/\n{"/g;
+   return $jsontextout;
 }
 1;
