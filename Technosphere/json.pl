@@ -12,13 +12,18 @@ my %hash1;
 my %hash2;
 my %hash3;
 my @data;
+my @days;
 
-@data=(\%hash1, \%hash2, \%hash3);
+#@data=(\%hash1, \%hash2, \%hash3);
 
+#@data=({ k => "test},{test"}, \%hash1, { k => "test},{test"},\%hash2);
+@data=({ k => "test},{test"}, { k => "test},{test"},{ k => "test},{test"});
+#@data=( \%hash1, \%hash2);
+@days=(3,4,6,8,9,5);
 %hash1 = (
        'month' => 3,
        'year' => 2017,
-       'days' => 3,
+       'days' => \@days,
 );
 %hash2 = (
        'month' => 5,
