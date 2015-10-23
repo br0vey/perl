@@ -13,7 +13,7 @@ my %hash2;
 my %hash3;
 my @data;
 
-@data=(\%hash1, \%hash2,  \%hash3);
+@data=(\%hash1, \%hash2, \%hash3);
 
 %hash1 = (
        'month' => 3,
