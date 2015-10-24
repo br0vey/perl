@@ -6,13 +6,11 @@
      decode_jsonl
      encode_jsonl
      );
-
-
 #@data=(\%hash1, \%hash2, \%hash3);
 
-#@data=({ k => "test},{test"}, \%hash1, { k => "test},{test"},\%hash2);
+#@data=({ k => "test},{test"}, hash1, { k => "test},{test"},\%hash2);
 
-#my @data=({k => "},{" }, [1,2,3]);
+#my @data=({a => 1}, {b => 2});
 my @days=(3,4,6,8,9,5);
 my %hash1 = (
        'month' => 3,
@@ -30,9 +28,13 @@ my %hash3 = (
        'year' => 2007,
        'days' => 56,
 );
-my @data=({ k => "test],[test"}, { y => "test},{test"},[1,2,3],{ y => "test},{test"},[8,6,4],{ y => "test},{test"},[5,6,7],[5,6,7], { y => "test},{test"},\%hash1,[11,56,67],\%hash1, { w => "test},{test"});
+my @data=({ k => "test],{test"}, { y => "test},{test"},[1,2,3],{ y => "test},{test"},[8,6,4],{ y => "test},{test"},[5,6,7],[5,6,7], { y => "test},{test"},\%hash1,[11,56,67],\%hash1, { w => "test},{test"});
+#@data =qq(@data)
 
-
+#my $string = encode_jsonl([
+#    {a => 1},
+#    {b => 2},
+#]);
 my $string = encode_jsonl(\@data);
 print "string:$string\n";
 
