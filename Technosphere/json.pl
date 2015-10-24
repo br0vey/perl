@@ -28,7 +28,7 @@ my %hash3 = (
        'year' => 2007,
        'days' => 56,
 );
-my @data=({ k => "X\n"}, { y => "test},{test"},[1,2,3],{ y => "test},{test"},[8,6,4],{ y => "test},{test"},[5,6,7],[5,6,7], { y => "test},{test"},\%hash1,[11,56,67],\%hash1, { w => "test},{test"});
+my @data=({ k => "qqq\n"}, { y => "test},{test"},[1,2,3],{ y => "test},{test"},[8,6,4],{ y => "test},{test"},[5,6,7],[5,6,7], { y => "test},{test"},\%hash1,[11,56,67],\%hash1, { w => "test},{test"});
 #@data =qq(@data)
 
 #my $string = encode_jsonl([
@@ -41,5 +41,5 @@ print "string:$string\n";
 my $arrayref = decode_jsonl($string);
 print  Dumper($arrayref); 
 
-my $string = encode_jsonl($arrayref);
+$string = encode_jsonl($arrayref);
 print "string:$string\n";
