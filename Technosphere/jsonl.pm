@@ -21,7 +21,7 @@ sub encode_jsonl{
    my @mm = @$elem;
    my $strout = "";
    my $str = "[";
-   my $tr1 = 0;
+ #  my $tr1 = 0;
    foreach my $em (@mm){
    #      $tr1 = 0; 
           $strout = $str;
@@ -33,11 +33,11 @@ sub encode_jsonl{
 #          if ($str =~ s/\\\\n/\\n/g){
 #            $tr1 = 1;
 #          }
-          $str =~ s/(?<=\w)\\n/\\\\n/g if $tr1 == 0;               
+          $str =~ s/(?<=\w)\\n/\\\\n/g;               
  #         print "str2:$str\n";
     #      $str =~ s/\\\\n/\\n/g if $tr1 = 1;
   #        print "str7:$str\n";
-          $str = $strout . $str . "\n" ;
+          $str = $strout . $str . "\n";
    }
 chop $str;
 $str = $str . "]"; 
