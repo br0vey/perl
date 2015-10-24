@@ -9,7 +9,9 @@ our @EXPORT;
 our $tr1 = 0;
 sub decode_jsonl {
    my $tmpp = shift;
+   print "tmpp:$tmpp\n";
    $tmpp =~ s/\n/,/g;
+   $tmpp =~  s/\\\\n/\\n/g;
    my  $hashout = decode_json($tmpp);
    return $hashout;
 }
@@ -28,9 +30,9 @@ sub encode_jsonl{
  #        $str = qq($str);
 #          $str =~ s/\\\\n/\\n/g if $tr1 == 0; 
   #        print "str4:$str\n";
-          if ($str =~ s/\\\\n/\\n/g){
-            $tr1 = 1;
-          }
+#          if ($str =~ s/\\\\n/\\n/g){
+#            $tr1 = 1;
+#          }
           $str =~ s/(?<=\w)\\n/\\\\n/g if $tr1 == 0;               
  #         print "str2:$str\n";
     #      $str =~ s/\\\\n/\\n/g if $tr1 = 1;
