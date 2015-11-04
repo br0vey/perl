@@ -16,6 +16,9 @@ sub decode_json {
             $hashout{$1} = $2;
         }
         if ( $elem =~ m/"(\w+\d+)":\s\["(.+)"\],/ ) {
+            if ( $elem =~ m/"(\w+\d+)":\s\["(.+)",.+"\],/ ) {
+            print "2:$2\n";
+            }
             my @array;
             push @array, $2;
             $hashout{$1} = \@array;
