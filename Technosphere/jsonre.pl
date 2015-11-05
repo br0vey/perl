@@ -15,13 +15,18 @@ sub decode_json {
         if ( $elem =~ m/"(\w+\d+)":\s"(.+)",/ ) {
             $hashout{$1} = $2;
         }
-        if ( $elem =~ m/"(\w+\d+)":\s\["(.+)"\],/ ) {
-            if ( $elem =~ m/"(\w+\d+)":\s\["(.+)",.+"\],/ ) {
-            print "2:$2\n";
+        if ( $elem =~ m/"(\w+\d+)":\s\["(.+)"\],/) {
+            if ( $elem =~ m/"(\w+\d+)":\s\["(.+)"\],/) {
+             my $tmpvar = $2;
+            #  $tmpvar =~ s/"//g;
+#              print "tmpvar:$tmpvar\n";     
+              my @jsarr = split ( /,/, $tmpvar );                     
+             for my $ent (@jsarr) {
+                 $ent =~ s/"//g;
+              }
+               print "jsa:@jsarr\n";
+               $hashout{$1} = \@jsarr; 
             }
-            my @array;
-            push @array, $2;
-            $hashout{$1} = \@array;
         }
         if ( $elem =~ m/"(\w+\d+)":\s{\s"(.+)":\s"(.+)"\s},/ ) {
             my %hashin;
