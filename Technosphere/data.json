@@ -2,6 +2,6 @@
 "key1": "string value",
 "key2": -3.1415,
 "key3": ["nested array","saedfsadf","sdfsadf","sadfasdf"],
-"key4": { "nested": "object" },
+"key4": { "nested": "object", "nested2": "object2", "nested4": "object4" },
 }
 
