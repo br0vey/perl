@@ -10,55 +10,31 @@ sub decode_json {
     while (@tmparr) {
         my $elem = shift @tmparr;
         if ( $elem =~ m/"(\w+\d+)":\s(-\d+\.\d+),$/ ) {
-               print "1:$1\n";
-                 print "2:$2\n";
-             
             $hashout{$1} = $2;
         }
-           if ( $elem =~ m/"(\w+\d+)":\s(\d+.\d+),$/ ) {
-               print "1:$1\n";
-                 print "2:$2\n";
-
+        if ( $elem =~ m/"(\w+\d+)":\s(\d+.\d+),$/ ) {
             $hashout{$1} = $2;
         }
 
-
-
-
-        if ( $elem =~ m/"(\w+\d+)":\s"(.+)",$/) {
-     
-                 print "21:$1\n";
-                 print "strval:$2\n";
- 
-           $hashout{$1} = $2;
+        if ( $elem =~ m/"(\w+\d+)":\s"(.+)",$/ ) {
+            $hashout{$1} = $2;
         }
-    #    if ( $elem =~ m/"(\w+\d+)":\s\["(.+)"\],/) {
-            if ( $elem =~ m/"(\w+\d+)":\s\["(.+)"\],$/) {
-              my @jsarr = split ( /,/, $2 );                     
-              for my $ent (@jsarr) {
-                 $ent =~ s/"//g;
-             }
-               print "jsa:@jsarr\n";
-               $hashout{$1} = \@jsarr; 
+        if ( $elem =~ m/"(\w+\d+)":\s\["(.+)"\],$/ ) {
+            my @jsarr = split( /,/, $2 );
+            for my $ent (@jsarr) {
+                $ent =~ s/"//g;
             }
-     #   }
-     
-     #  if ( $elem =~ m/"(\w+\d+)":\s{\s"(.+)":\s"(.+)"\s},/ ) {
-          if ( $elem =~ m/"(\w+\d+)":\s{\s(.+)\s},$/ ) {         
-           print "2:$2\n";  
-           my @jsarr = split ( /,\s/, $2 );
-          print "jsa:@jsarr\n";
-          my %jsonhashin;
-          for my $ent (@jsarr) {
-                 $ent =~ m/"(.+)":\s"(.+)"/;
-                 print "1:$1\n";
-                 print "2:$2\n";
-                 $jsonhashin{$1}  = $2;
-          } 
+            $hashout{$1} = \@jsarr;
+        }
+        if ( $elem =~ m/"(\w+\d+)":\s{\s(.+)\s},$/ ) {
 
-  
-        #   my %jsonhashin;
-#            $jsonhashin{$2}  = $3;
+            my @jsarr = split( /,\s/, $2 );
+            my %jsonhashin;
+            for my $ent (@jsarr) {
+                $ent =~ m/"(.+)":\s"(.+)"/;
+                $jsonhashin{$1} = $2;
+            }
+
             $hashout{$1} = \%jsonhashin;
         }
     }
