@@ -6,27 +6,31 @@ use DDP;
 sub decode_json {
     my %hashout;
     my $data = shift;
-    my @tmparr = ( split /\n/, $data );
+    my @tmparr = ( split /,/, $data );
+    print "data:@tmparr\n";
+    print "data:$tmparr[1]\n";
+
     while (@tmparr) {
         my $elem = shift @tmparr;
-        if ( $elem =~ m/"(\w+\d+)":\s(-\d+\.\d+),$/ ) {
+        if ( $elem =~ m/"(\w+\d+)":\s(-\d+\.\d+)$/ ) {
             $hashout{$1} = $2;
         }
-        if ( $elem =~ m/"(\w+\d+)":\s(\d+.\d+),$/ ) {
+        if ( $elem =~ m/"(\w+\d+)":\s(\d+.\d+)$/ ) {
             $hashout{$1} = $2;
         }
 
-        if ( $elem =~ m/"(\w+\d+)":\s"(.+)",$/ ) {
+        if ( $elem =~ m/"(\w+\d+)":\s"(.+)"$/ ) {
             $hashout{$1} = $2;
         }
-        if ( $elem =~ m/"(\w+\d+)":\s\["(.+)"\],$/ ) {
+        if ( $elem =~ m/"(\w+\d+)":\s\[(.+)\]$/ ) {
+            print "2:$2\n";
             my @jsarr = split( /,/, $2 );
             for my $ent (@jsarr) {
                 $ent =~ s/"//g;
             }
             $hashout{$1} = \@jsarr;
         }
-        if ( $elem =~ m/"(\w+\d+)":\s{\s(.+)\s},$/ ) {
+        if ( $elem =~ m/"(\w+\d+)":\s{\s(.+)\s}$/ ) {
 
             my @jsarr = split( /,\s/, $2 );
             my %jsonhashin;
